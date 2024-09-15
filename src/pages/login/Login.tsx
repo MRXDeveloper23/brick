@@ -35,16 +35,14 @@ const Login = () => {
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // Final validation check
-    if (name.length < 3) {
+    if (name.length < 3 && name.length > 0) {
       setNameError("Name must be at least 3 characters long.");
     }
-    if (password.length < 6) {
+    if (password.length < 6 && password.length > 0) {
       setPasswordError("Password must be at least 6 characters long.");
     }
 
     if (name.length >= 3 && password.length >= 6) {
-      // Proceed with login
       console.log("Form submitted successfully");
     }
   };
