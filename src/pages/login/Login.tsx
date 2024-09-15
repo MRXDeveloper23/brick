@@ -29,7 +29,7 @@ const Login = () => {
     }
   };
 
-  const handleEyeClick = (e: MouseEvent<HTMLDivElement>) => {
+  const handleEyeClick = () => {
     setPasswordEye(!passwordEye);
   };
 
