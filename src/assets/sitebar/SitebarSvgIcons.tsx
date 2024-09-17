@@ -1,4 +1,7 @@
 import React from "react";
+interface propsColor {
+  color: string;
+}
 
 export const Logo: React.FC = () => {
   return (
@@ -187,7 +190,7 @@ export const Rashods: React.FC = () => {
     </svg>
   );
 };
-export const Money: React.FC = () => {
+export const Money: React.FC<propsColor> = ({ color }) => {
   return (
     <svg
       width="22"
@@ -199,14 +202,14 @@ export const Money: React.FC = () => {
       <g clip-path="url(#clip0_58_2449)">
         <path
           d="M11 0.916672V21.0833"
-          stroke="white"
+          stroke={color}
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
         />
         <path
           d="M15.5833 4.58333H8.70833C7.85743 4.58333 7.04138 4.92135 6.4397 5.52303C5.83802 6.12471 5.5 6.94076 5.5 7.79166C5.5 8.64256 5.83802 9.45862 6.4397 10.0603C7.04138 10.662 7.85743 11 8.70833 11H13.2917C14.1426 11 14.9586 11.338 15.5603 11.9397C16.162 12.5414 16.5 13.3574 16.5 14.2083C16.5 15.0592 16.162 15.8753 15.5603 16.477C14.9586 17.0786 14.1426 17.4167 13.2917 17.4167H5.5"
-          stroke="white"
+          stroke={color}
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
