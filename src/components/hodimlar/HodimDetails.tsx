@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   HomeIcon,
   MoneyIcon,
   TrashIcon,
   UserIcon,
 } from "../../assets/hodimlar/HodimlarSvg";
+import Malumotlar from "./details/Malumotlar";
+import Bajarilgan from "./details/Bajarilgan";
+import Tolov from "./details/Tolov";
+import Oylik from "./details/Oylik";
 
 const HodimDetails: React.FC = () => {
+  const [pageCount, setPageCount] = useState<number>(1);
+
+  const handleClick = (num: number) => {
+    setPageCount(num);
+  };
+
   return (
     <div className="h-[100%]">
       <div className="bg-[#fff] rounded-md shadow-md">
@@ -25,29 +35,66 @@ const HodimDetails: React.FC = () => {
         </div>
         <div className="flex justify-between items-center pr-3">
           <div className=" py-1 flex  ">
-            <button className="flex items-center gap-2 py-4 px-5 border-b ">
-              <HomeIcon />
-              <p className="font-semibold text-[14px]">Malunmotlar</p>
+            <button
+              className="flex items-center gap-2 py-4 px-5 border-b"
+              onClick={() => handleClick(1)}
+            >
+              <HomeIcon color={pageCount == 1 ? "#4361EE" : "#888EA8"} />
+              <p
+                className={`font-semibold text-[14px] ${
+                  pageCount == 1 ? "text-[#4361EE]" : "text-[#888EA8]"
+                }`}
+              >
+                Malunmotlar
+              </p>
             </button>
-            <button className="flex items-center gap-2 py-4 px-5  ">
-              <UserIcon color="#4361EE" />
-              <p className="font-semibold text-[14px] text-[#4361EE]">
+            <button
+              className="flex items-center gap-2 py-4 px-5  "
+              onClick={() => handleClick(2)}
+            >
+              <UserIcon color={pageCount == 2 ? "#4361EE" : "#888EA8"} />
+              <p
+                className={`font-semibold text-[14px] ${
+                  pageCount == 2 ? "text-[#4361EE]" : "text-[#888EA8]"
+                }`}
+              >
                 Bajarilgan ishlar
               </p>
             </button>
-            <button className="flex items-center gap-2 py-4 px-5  ">
-              <MoneyIcon color="#888EA8" />
-              <p className="font-semibold text-[14px]">To’lov tarixi</p>
+            <button
+              className="flex items-center gap-2 py-4 px-5  "
+              onClick={() => handleClick(3)}
+            >
+              <MoneyIcon color={pageCount == 3 ? "#4361EE" : "#888EA8"} />
+              <p
+                className={`font-semibold text-[14px] ${
+                  pageCount == 3 ? "text-[#4361EE]" : "text-[#888EA8]"
+                }`}
+              >
+                To’lov tarixi
+              </p>
             </button>
-            <button className="flex items-center gap-2 py-4 px-5  ">
-              <MoneyIcon color="#888EA8" />
-              <p className="font-semibold text-[14px]">Oylik to’lash </p>
+            <button
+              className="flex items-center gap-2 py-4 px-5  "
+              onClick={() => handleClick(4)}
+            >
+              <MoneyIcon color={pageCount == 4 ? "#4361EE" : "#888EA8"} />
+              <p
+                className={`font-semibold text-[14px] ${
+                  pageCount == 4 ? "text-[#4361EE]" : "text-[#888EA8]"
+                }`}
+              >
+                Oylik to’lash{" "}
+              </p>
             </button>
           </div>
         </div>
       </div>
       <div className="bg-[#fff] h-auto mt-[20px] w-full">
-        
+        {pageCount == 1 && <Malumotlar />}
+        {pageCount == 2 && <Bajarilgan />}
+        {pageCount == 3 && <Tolov />}
+        {pageCount == 4 && <Oylik />}
       </div>
     </div>
   );
