@@ -1,8 +1,12 @@
 import React from "react";
+import MyDataTable from "../../components/hodimlar/Table";
 
 const Hodimlar: React.FC = () => {
-  return <div>Hodimlar</div>;
+  return (
+    <div>
+      <MyDataTable />
+    </div>
+  );
 };
 
 export default Hodimlar;
-Z

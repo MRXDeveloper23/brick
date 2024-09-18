@@ -35,7 +35,7 @@ export const Sitebar: React.FC = () => {
     { to: "/", label: "Xodimlar", icon: <Employees /> },
     { to: "/statistika", label: "Statistika", icon: <Statistic /> },
     { to: "/rasxodlar", label: "Rasxodlar", icon: <Rashods /> },
-    { to: "/oyliklar", label: "Oyliklar", icon: <Money /> },
+    { to: "/oyliklar", label: "Oyliklar", icon: <Money color="white" /> },
     { to: "/sotuv", label: "Sotuv bo’limi", icon: <Groups /> },
     { to: "/ishlabchiqarish", label: "Ishlab chiqarish", icon: <Kub /> },
     { to: "/ombor", label: "Ombor", icon: <Zone /> },

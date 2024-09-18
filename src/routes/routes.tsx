@@ -9,6 +9,7 @@ import Ombor from "../pages/ombor/Ombor";
 import Login from "../pages/login/Login";
 import Statistic from "../pages/statistic/Statistic";
 import Settings from "../pages/settings/Settings";
+import HodimDetails from "../components/hodimlar/HodimDetails";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,14 @@ export const router = createBrowserRouter([
     element: (
       <Layout>
         <Hodimlar />
+      </Layout>
+    ),
+  },
+  {
+    path: "/details",
+    element: (
+      <Layout>
+        <HodimDetails />
       </Layout>
     ),
   },
