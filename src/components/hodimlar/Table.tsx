@@ -1,10 +1,15 @@
 import React from "react";
 import {
   FilterIcon,
+  MoreIcon,
+  PencilIcon,
   SearchIcon,
   TrashIcon,
   UserIcon,
 } from "../../assets/hodimlar/HodimlarSvg";
+
+import img from "../../assets/details.png";
+import { useNavigate } from "react-router-dom";
 
 const data = [
   {
@@ -15,7 +20,8 @@ const data = [
     date: "15 Dec 2020",
     amount: "2275.45",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 2,
@@ -25,7 +31,8 @@ const data = [
     date: "20 Dec 2020",
     amount: "1044.00",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 3,
@@ -35,7 +42,8 @@ const data = [
     date: "27 Dec 2020",
     amount: "20.00",
     status: { tooltip: "Pending", color: "danger" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 4,
@@ -45,7 +53,8 @@ const data = [
     date: "31 Dec 2020",
     amount: "344.00",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 5,
@@ -55,7 +64,8 @@ const data = [
     date: "03 Jan 2021",
     amount: "405.15",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 6,
@@ -65,7 +75,8 @@ const data = [
     date: "14 Jan 2020",
     amount: "100.00",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 7,
@@ -75,7 +86,8 @@ const data = [
     date: "20 Jan 2021",
     amount: "59.21",
     status: { tooltip: "Pending", color: "danger" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 8,
@@ -85,7 +97,8 @@ const data = [
     date: "25 Jan 2021",
     amount: "79.00",
     status: { tooltip: "Pending", color: "danger" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 9,
@@ -95,7 +108,8 @@ const data = [
     date: "28 Jan 2021",
     amount: "149.00",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 10,
@@ -105,7 +119,8 @@ const data = [
     date: "30 Jan 2021",
     amount: "400",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 11,
@@ -115,7 +130,8 @@ const data = [
     date: "06 Feb 2021",
     amount: "49.00",
     status: { tooltip: "Pending", color: "danger" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
   {
     id: 12,
@@ -125,10 +141,17 @@ const data = [
     date: "10 Feb 2021",
     amount: "234.40",
     status: { tooltip: "Paid", color: "success" },
-    profile: "profile-1.jpeg",
+    profile: img,
+    phoneNumber: 998951232175,
   },
 ];
 const Table: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleCLick = (id: number) => {
+    navigate(`/details`);
+  };
+
   return (
     <div className="">
       <div className="bg-[#fff] rounded-md shadow-md">
@@ -196,7 +219,63 @@ const Table: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className=""></div>
+
+      <div className="border mt-[20px]">
+        <div className="bg-[#4D5773] w-full flex gap-[30px] items-center  p-[10px] text-[#fff] rounded-tl-[5px] rounded-tr-[5px]">
+          <div className=" w-[90px] h-[20px]"></div>
+          <div className="grid grid-cols-7 items-center gap-6 w-full ">
+            <h2 className="text-[14px] font-semibold ">ID</h2>
+            <h2 className="text-[14px] font-semibold">I.F.SH.</h2>
+            <h3 className="text-[14px] font-semibold">Nomer</h3>
+            <h3 className="text-[14px] font-semibold">Sana</h3>
+            <h3 className="text-[14px] font-semibold">Maosh</h3>
+            <h3 className="text-[14px] font-semibold">Statust</h3>
+            <h3 className="text-[14px] font-semibold"></h3>
+          </div>
+        </div>
+        <div className=" w-full  px-[10px] h-[600px] overflow-y-scroll ">
+          {data.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-center gap-[30px] py-2 border-t border-[#071A5033]"
+            >
+              <div className="flex items-center gap-[30px]">
+                <input type="checkbox" className="w-[20px] h-[20px]" />
+                <img
+                  src={item.profile}
+                  className="w-[40px] h-[40px] cursor-pointer"
+                  alt=""
+                  onClick={() => handleCLick(item.id)}
+                />
+              </div>
+              <div className="grid grid-cols-7 gap-6 items-center w-full ">
+                <p className="text-[14px] font-semibold ">{item.invoice}</p>
+
+                <h2 className="text-[14px] font-medium">{item.name}</h2>
+                <h2 className="text-[14px] font-medium">{item.phoneNumber}</h2>
+                <h3 className="text-[14px] font-medium">{item.date}</h3>
+                <h3 className="text-[14px] font-medium">${item.amount}</h3>
+                <div className="">
+                  <button className="py-1 px-4 border  border-[#58BC2D] text-[#58BC2D] text-[14px] font-medium">
+                    Активный
+                  </button>
+                </div>
+                <div className="text-[14px] flex justify-end items-center gap-[20px] font-medium pr-5">
+                  <button>
+                    <PencilIcon />
+                  </button>
+                  <button>
+                    <TrashIcon color="#666666" />
+                  </button>
+                  <button>
+                    <MoreIcon />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
