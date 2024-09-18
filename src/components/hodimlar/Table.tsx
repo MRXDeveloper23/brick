@@ -1,8 +1,10 @@
 import React from "react";
 import {
+  DownloadIcon,
   FilterIcon,
   MoreIcon,
   PencilIcon,
+  PlusIcon,
   SearchIcon,
   TrashIcon,
   UserIcon,
@@ -176,19 +178,19 @@ const Table: React.FC = () => {
                 </p>
               </button>
               <button className="px-5 text-[#fff] rounded-md bg-[#00AB55] flex items-center h-[38px] gap-3">
-                <TrashIcon color="#fff" />
+                <DownloadIcon color="#fff" />
                 <p className="font-semibold text-[14px] leading-[19px]">
                   Download
                 </p>
               </button>
               <button className="px-5 text-[#fff] rounded-md bg-[#43EE69] flex items-center h-[38px] gap-3">
-                <TrashIcon color="#fff" />
+                <PencilIcon color="#fff" />
                 <p className="font-semibold text-[14px] leading-[19px]">
                   Parol yangilash
                 </p>
               </button>
               <button className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3">
-                <TrashIcon color="#fff" />
+                <PlusIcon color="#fff" />
                 <p className="font-semibold text-[14px] leading-[19px]">
                   Add New
                 </p>
@@ -204,11 +206,11 @@ const Table: React.FC = () => {
             </button>
             <button className="flex items-center gap-2 py-4 px-5  ">
               <UserIcon color="#4361EE" />
-              <p className="font-semibold text-[14px]">Oylik ishchilar</p>
+              <p className="font-semibold text-[14px]">Ishbay</p>
             </button>
             <button className="flex items-center gap-2 py-4 px-5  ">
               <UserIcon color="#4361EE" />
-              <p className="font-semibold text-[14px]">Oylik ishchilar</p>
+              <p className="font-semibold text-[14px]">Kunlik ishchilar</p>
             </button>
           </div>
           <div className="">
@@ -262,7 +264,7 @@ const Table: React.FC = () => {
                 </div>
                 <div className="text-[14px] flex justify-end items-center gap-[20px] font-medium pr-5">
                   <button>
-                    <PencilIcon />
+                    <PencilIcon color="#666666" />
                   </button>
                   <button>
                     <TrashIcon color="#666666" />

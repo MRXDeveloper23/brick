@@ -80,7 +80,7 @@ export const MoreIcon: React.FC = () => {
     </svg>
   );
 };
-export const PencilIcon: React.FC = () => {
+export const PencilIcon: React.FC<propsColor> = ({ color }) => {
   return (
     <svg
       width="20"
@@ -91,14 +91,14 @@ export const PencilIcon: React.FC = () => {
     >
       <path
         d="M9.1665 3.33334H3.33317C2.89114 3.33334 2.46722 3.50894 2.15466 3.8215C1.8421 4.13406 1.6665 4.55798 1.6665 5.00001V16.6667C1.6665 17.1087 1.8421 17.5326 2.15466 17.8452C2.46722 18.1577 2.89114 18.3333 3.33317 18.3333H14.9998C15.4419 18.3333 15.8658 18.1577 16.1783 17.8452C16.4909 17.5326 16.6665 17.1087 16.6665 16.6667V10.8333"
-        stroke="#666666"
+        stroke={color}
         stroke-width="1.25"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M15.4165 2.08332C15.748 1.7518 16.1977 1.56555 16.6665 1.56555C17.1353 1.56555 17.585 1.7518 17.9165 2.08332C18.248 2.41484 18.4343 2.86448 18.4343 3.33332C18.4343 3.80216 18.248 4.2518 17.9165 4.58332L9.99984 12.5L6.6665 13.3333L7.49984 9.99999L15.4165 2.08332Z"
-        stroke="#666666"
+        stroke={color}
         stroke-width="1.25"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -107,6 +107,66 @@ export const PencilIcon: React.FC = () => {
   );
 };
 
+export const PlusIcon: React.FC<propsColor> = ({ color }) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 4.16666V15.8333"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M4.1665 10H15.8332"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const DownloadIcon: React.FC<propsColor> = ({ color }) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M5.8335 8.33334L10.0002 12.5L14.1668 8.33334"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10 12.5V2.5"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
 export const SearchIcon: React.FC = () => {
   return (
     <svg
