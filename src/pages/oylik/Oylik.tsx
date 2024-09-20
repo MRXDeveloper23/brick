@@ -5,6 +5,7 @@ import {
   TrashIcon,
   UserIcon,
 } from "../../assets/hodimlar/HodimlarSvg";
+import OyliklatTable from "../../components/oyliklar/OyliklatTable";
 
 const Oylik: React.FC = () => {
   const [count, setCount] = useState<number>(1);
@@ -85,6 +86,26 @@ const Oylik: React.FC = () => {
               </p>
             </button>
           </div>
+        </div>
+      </div>
+      <div className="mt-[20px]">
+        <div className="bg-[#4D5773] w-full flex gap-[30px] items-center  p-[10px] text-[#fff] rounded-tl-[5px] rounded-tr-[5px]">
+          <div className=" w-[90px] h-[20px]"></div>
+          <div className="grid grid-cols-10 items-center gap-2 w-full ">
+            <h2 className="text-[14px] font-semibold ">ID</h2>
+            <h2 className="text-[14px] font-semibold">I.F.SH.</h2>
+            <h3 className="text-[14px] font-semibold">Sana</h3>
+            <h3 className="text-[14px] font-semibold">Nomer</h3>
+            <h3 className="text-[14px] font-semibold">Ishchi status</h3>
+            <h3 className="text-[14px] font-semibold">Avans</h3>
+            <h3 className="text-[14px] font-semibold">Maosh</h3>
+            <h3 className="text-[14px] font-semibold">Qolgan summa</h3>
+            <h3 className="text-[14px] font-semibold">Statust</h3>
+            <h3 className="text-[14px] font-semibold"></h3>
+          </div>
+        </div>
+        <div className="bg-[#fff]">
+          <OyliklatTable />
         </div>
       </div>
     </div>
