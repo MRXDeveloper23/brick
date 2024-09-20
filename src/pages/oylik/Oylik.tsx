@@ -117,10 +117,12 @@ const Oylik: React.FC = () => {
             {filteredData.map((item) => (
               <OyliklatTable
                 name={item.name}
+                id={item.id}
                 amount={item.amount}
                 date={item.date}
                 phoneNumber={item.phoneNumber}
                 invoice={item.invoice}
+                img={item.profile}
               />
             ))}
           </div>

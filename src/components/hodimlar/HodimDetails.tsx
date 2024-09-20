@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   HomeIcon,
   MoneyIcon,
+  PlusIcon,
   TrashIcon,
   UserIcon,
 } from "../../assets/hodimlar/HodimlarSvg";
@@ -26,7 +27,7 @@ const HodimDetails: React.FC = () => {
           </h2>
           <div className="flex gap-4">
             <button className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3">
-              <TrashIcon color="#fff" />
+              <PlusIcon color="#fff" />
               <p className="font-semibold text-[14px] leading-[19px]">
                 Add New
               </p>

@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  TasdiqlashTwo,
-  TasqidlashOne,
-} from "../../../assets/hodimlar/HodimlarSvg";
+
 import img from "../../../assets/details.png";
 
 const Tolov: React.FC = () => {
