@@ -6,14 +6,20 @@ import {
   UserIcon,
 } from "../../assets/hodimlar/HodimlarSvg";
 import OyliklatTable from "../../components/oyliklar/OyliklatTable";
+import { Data } from "../../data/Data";
 
 const Oylik: React.FC = () => {
   const [count, setCount] = useState<number>(1);
+  const [data, setData] = useState(Data);
+  const [search, setSearch] = useState("");
 
   const handleClick = (num: number) => {
     setCount(num);
   };
 
+  const filteredData = data.filter((f) =>
+    f.name.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <div>
       <div className="bg-[#fff] rounded-md shadow-md">
@@ -30,6 +36,8 @@ const Oylik: React.FC = () => {
                 type="text"
                 className="border-0 outline-none bg-transparent"
                 placeholder="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
               <SearchIcon />
             </div>
@@ -91,7 +99,7 @@ const Oylik: React.FC = () => {
       <div className="mt-[20px]">
         <div className="bg-[#4D5773] w-full flex gap-[30px] items-center  p-[10px] text-[#fff] rounded-tl-[5px] rounded-tr-[5px]">
           <div className=" w-[90px] h-[20px]"></div>
-          <div className="grid grid-cols-10 items-center gap-2 w-full ">
+          <div className="grid grid-cols-10 items-center  w-full ">
             <h2 className="text-[14px] font-semibold ">ID</h2>
             <h2 className="text-[14px] font-semibold">I.F.SH.</h2>
             <h3 className="text-[14px] font-semibold">Sana</h3>
@@ -105,7 +113,17 @@ const Oylik: React.FC = () => {
           </div>
         </div>
         <div className="bg-[#fff]">
-          <OyliklatTable />
+          <div className=" w-full  px-[10px] h-[600px] overflow-y-scroll ">
+            {filteredData.map((item) => (
+              <OyliklatTable
+                name={item.name}
+                amount={item.amount}
+                date={item.date}
+                phoneNumber={item.phoneNumber}
+                invoice={item.invoice}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
