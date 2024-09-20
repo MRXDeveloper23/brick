@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Ishbay: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleCLick = (id: number) => {
+  const handleCLick = () => {
     navigate(`/details`);
   };
   return (
@@ -26,7 +26,7 @@ const Ishbay: React.FC = () => {
               src={item.profile}
               className="w-[40px] h-[40px] cursor-pointer"
               alt=""
-              onClick={() => handleCLick(item.id)}
+              onClick={handleCLick}
             />
           </div>
           <div className="grid grid-cols-7 gap-6 items-center w-full ">

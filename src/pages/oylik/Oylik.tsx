@@ -10,14 +10,13 @@ import { Data } from "../../data/Data";
 
 const Oylik: React.FC = () => {
   const [count, setCount] = useState<number>(1);
-  const [data, setData] = useState(Data);
   const [search, setSearch] = useState("");
 
   const handleClick = (num: number) => {
     setCount(num);
   };
 
-  const filteredData = data.filter((f) =>
+  const filteredData = Data.filter((f) =>
     f.name.toLowerCase().includes(search.toLowerCase())
   );
   return (

@@ -3,7 +3,6 @@ import {
   HomeIcon,
   MoneyIcon,
   PlusIcon,
-  TrashIcon,
   UserIcon,
 } from "../../assets/hodimlar/HodimlarSvg";
 import Malumotlar from "./details/Malumotlar";
