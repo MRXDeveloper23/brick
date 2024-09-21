@@ -116,6 +116,8 @@ const Oylik: React.FC = () => {
           <div className=" w-full  px-[10px] h-[600px] overflow-y-scroll ">
             {filteredData.map((item) => (
               <OyliklatTable
+                id={item.id}
+                img={item.profile}
                 name={item.name}
                 amount={item.amount}
                 date={item.date}

@@ -9,10 +9,10 @@ interface DataProps {
   id: number;
   img: string;
   name: string;
-  date: number;
+  date: string;
   phoneNumber: number;
-  invoice: number;
-  amount: number;
+  invoice: string;
+  amount: string;
 }
 
 const OyliklatTable: React.FC<DataProps> = ({

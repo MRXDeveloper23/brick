@@ -3,12 +3,10 @@ import {
   MoreIcon,
   PencilIcon,
   TrashIcon,
-} from "../../../assets/hodimlar/HodimlarSvg";
-import { Data } from "../../../data/Data";
+} from "../../assets/hodimlar/HodimlarSvg";
+import { Data } from "../../data/Data";
 
-// import { Data } from "../../data/Data";
-
-const Oylik = () => {
+const TableContent = () => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
   // Toggle selection of a single row
@@ -112,4 +110,4 @@ const Oylik = () => {
   );
 };
 
-export default Oylik;
+export default TableContent;
