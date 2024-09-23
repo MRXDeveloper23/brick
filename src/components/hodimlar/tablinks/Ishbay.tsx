@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-	MoreIcon,
-	PencilIcon,
-	TrashIcon,
-} from '../../../assets/hodimlar/HodimlarSvg';
-import { Data } from '../../../data/Data';
+import { MoreIcon, PencilIcon, TrashIcon } from '@/assets/hodimlar/HodimlarSvg';
+import { Data } from '@/data/Data';
 import { useNavigate } from 'react-router-dom';
 
 const Ishbay: React.FC = () => {
