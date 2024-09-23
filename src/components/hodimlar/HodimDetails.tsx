@@ -4,7 +4,7 @@ import {
 	MoneyIcon,
 	PlusIcon,
 	UserIcon,
-} from '../../assets/hodimlar/HodimlarSvg';
+} from '@/assets/hodimlar/HodimlarSvg';
 import Malumotlar from './details/Malumotlar';
 import Bajarilgan from './details/Bajarilgan';
 import Tolov from './details/Tolov';
