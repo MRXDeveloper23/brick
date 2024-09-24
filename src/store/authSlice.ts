@@ -10,7 +10,7 @@ const authSlice = createSlice({
 		signIn: (state, action) => {
 			const { token } = action.payload;
 			saveToken(token);
-			return { token };
+			state.token = token;
 		},
 		signOut: () => {
 			removeToken();
