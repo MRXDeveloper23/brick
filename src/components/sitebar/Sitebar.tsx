@@ -87,7 +87,10 @@ export const Sitebar: React.FC = () => {
 				</div>
 			</div>
 			<div className="w-full py-[30px] px-[20px] h-[100px] border-[#ffffff79] border-t flex justify-center items-center">
-				<div className="flex items-center gap-2">
+				<div
+					className="flex items-center gap-2 cursor-pointer"
+					onClick={() => navigate('/profile')}
+				>
 					<img src={userImg} className="w-[40px] h-[40px]" alt="" />
 					<div
 						className={`text-base overflow-hidden whitespace-nowrap transition-all duration-500 ${

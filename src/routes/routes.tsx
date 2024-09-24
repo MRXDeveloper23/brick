@@ -10,8 +10,9 @@ import Login from '../pages/login/Login';
 import Statistic from '../pages/statistic/Statistic';
 import Settings from '../pages/settings/Settings';
 import HodimDetails from '../components/hodimlar/HodimDetails';
+import Profile from '@/pages/profile';
 
-export const router = createBrowserRouter([
+export const protectedRouter = createBrowserRouter([
 	{
 		path: '/',
 		element: (
@@ -84,5 +85,16 @@ export const router = createBrowserRouter([
 			</Layout>
 		),
 	},
-	{ path: '/login', element: <Login /> },
+	{
+		path: '/profile',
+		element: (
+			<Layout>
+				<Profile />
+			</Layout>
+		),
+	},
+]);
+
+export const publicRouter = createBrowserRouter([
+	{ path: '*', element: <Login /> },
 ]);
