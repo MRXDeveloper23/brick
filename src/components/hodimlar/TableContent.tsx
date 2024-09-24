@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   MoreIcon,
   PencilIcon,
   TrashIcon,
 } from "../../assets/hodimlar/HodimlarSvg";
 import { Data } from "../../data/Data";
+import { useNavigate } from "react-router-dom";
 
 const TableContent = () => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
-
+  const navigate = useNavigate();
   // Toggle selection of a single row
   const handleCheckboxChange = (id: number) => {
     setSelectedRows(
@@ -37,6 +38,9 @@ const TableContent = () => {
   // Check if all rows are selected
   const isAllSelected = selectedRows.length === Data.length;
 
+  const handleClick = () => {
+    navigate("/details");
+  };
   return (
     <div>
       <div className="border mt-[20px]">
@@ -75,6 +79,7 @@ const TableContent = () => {
                 />
                 <img
                   src={item.profile}
+                  onClick={handleClick}
                   className="w-[40px] h-[40px] cursor-pointer"
                   alt=""
                 />

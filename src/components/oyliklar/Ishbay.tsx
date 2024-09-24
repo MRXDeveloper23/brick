@@ -1,18 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   DownloadIcon,
-  FilterIcon,
   MoreIcon,
   PencilIcon,
-  PlusIcon,
   SearchIcon,
   TrashIcon,
   UserIcon,
-} from "../../../assets/hodimlar/HodimlarSvg";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteSelected } from "../../../redux/hodimlarSlice/ishbaySlice";
+} from "../../assets/hodimlar/HodimlarSvg";
 
-const Ishbay = ({ count, setCount }: any) => {
+import { deleteSelected } from "../../redux/hodimlarSlice/ishbaySlice";
+import { useDispatch, useSelector } from "react-redux";
+
+interface TableProps {
+  count: number;
+  setCount: any;
+}
+
+const Ishbay: React.FC<TableProps> = ({ count, setCount }) => {
   const dispatch = useDispatch();
 
   // Fetch the items from the Redux store
@@ -20,6 +24,8 @@ const Ishbay = ({ count, setCount }: any) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]); // Holds selected row IDs
   const [selectedData, setSelectedData] = useState<any[]>([]); // Holds selected data
   const [search, setSearch] = useState<string>(""); // For search functionality
+  // console.log(items);
+  //   const navigate = useNavigate();
 
   // Handle row selection and deselection
   const handleCheckboxChange = (item: any) => {
@@ -81,9 +87,12 @@ const Ishbay = ({ count, setCount }: any) => {
     <div>
       <div className="bg-[#fff] rounded-md shadow-md">
         <div className="flex justify-between items-center py-4 border-b border-[#1B2E4B] pl-5 pr-3 ">
-          <h2 className="text-[24px] font-medium leading-[28px]">
-            Xodimlar ro’yxati
-          </h2>
+          <div className="">
+            <h2 className="text-[24px] font-medium leading-[28px]">Oyliklar</h2>
+            <p className="text-[#4361EE] text-[16px] font-medium">
+              Jami oyliklar: 2 262 296 001 065 so’m
+            </p>
+          </div>
           <div className="flex items-center gap-4 ">
             <div className="bg-[#DFE8F1] flex p-4 h-[40px] border border-[#00000014] rounded-[5px] items-center gap-1">
               <input
@@ -112,81 +121,73 @@ const Ishbay = ({ count, setCount }: any) => {
                   Download
                 </p>
               </button>
-              <button className="px-5 text-[#fff] rounded-md bg-[#43EE69] flex items-center h-[38px] gap-3">
-                <PencilIcon color="#fff" />
-                <p className="font-semibold text-[14px] leading-[19px]">
-                  Parol yangilash
-                </p>
-              </button>
-              <button className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3">
-                <PlusIcon color="#fff" />
-                <p className="font-semibold text-[14px] leading-[19px]">
-                  Add New
-                </p>
-              </button>
             </div>
           </div>
         </div>
         <div className="flex justify-between items-center pr-3">
-          <div className="py-1 flex">
+          <div className=" py-1 flex  ">
             <button
               className={`flex items-center gap-2 py-4 px-5  ${
-                count === 1 ? "text-[#4361EE]" : "text-[#888EA8]"
-              }`}
+                count == 1 ? "text-[#4361EE]" : "text-[#888EA8]"
+              } `}
               onClick={() => setCount(1)}
             >
-              <UserIcon color={count === 1 ? "#4361EE" : "#888EA8"} />
+              <UserIcon color={count == 1 ? "#4361EE" : "#888EA8"} />
               <p className="font-semibold text-[14px]">Oylik ishchilar</p>
             </button>
             <button
               className={`flex items-center gap-2 py-4 px-5  ${
-                count === 2 ? "text-[#4361EE]" : "text-[#888EA8]"
-              }`}
+                count == 2 ? "text-[#4361EE]" : "text-[#888EA8]"
+              } `}
               onClick={() => setCount(2)}
             >
-              <UserIcon color={count === 2 ? "#4361EE" : "#888EA8"} />
+              <UserIcon color={count == 2 ? "#4361EE" : "#888EA8"} />
               <p className="font-semibold text-[14px]">Ishbay</p>
             </button>
             <button
               className={`flex items-center gap-2 py-4 px-5  ${
-                count === 3 ? "text-[#4361EE]" : "text-[#888EA8]"
-              }`}
+                count == 3 ? "text-[#4361EE]" : "text-[#888EA8]"
+              } `}
               onClick={() => setCount(3)}
             >
-              <UserIcon color={count === 3 ? "#4361EE" : "#888EA8"} />
+              <UserIcon color={count == 3 ? "#4361EE" : "#888EA8"} />
               <p className="font-semibold text-[14px]">Kunlik ishchilar</p>
             </button>
           </div>
           <div className="">
-            <button className="px-5 text-[#fff] rounded-md bg-[#203674] flex items-center h-[38px] gap-3">
-              <FilterIcon />
-              <p className="font-semibold text-[14px] leading-[19px]">Filtr</p>
+            <button className="px-5 text-[#fff] rounded-md bg-[#4361ee] flex items-center h-[38px] gap-3">
+              <p className="font-semibold text-[14px] leading-[19px]">
+                Oylik To'lash
+              </p>
             </button>
           </div>
         </div>
       </div>
-      <div>
-        <div className="border mt-[20px]">
-          <div className="bg-[#4D5773] w-full flex gap-[30px] items-center  p-[10px] text-[#fff] rounded-tl-[5px] rounded-tr-[5px]">
-            <div className="w-[90px] h-[20px]">
-              <input
-                type="checkbox"
-                className="w-[15px] h-[20px]"
-                checked={isAllSelected} // Check if all are selected
-                onChange={handleSelectAll} // Handle select all toggle
-              />
-            </div>
-            <div className="grid grid-cols-7 items-center gap-2 w-full ">
-              <h2 className="text-[14px] font-semibold ">ID</h2>
-              <h2 className="text-[14px] font-semibold">I.F.SH.</h2>
-              <h3 className="text-[14px] font-semibold">Nomer</h3>
-              <h3 className="text-[14px] font-semibold">Sana</h3>
-              <h3 className="text-[14px] font-semibold">Maosh</h3>
-              <h3 className="text-[14px] font-semibold">Statust</h3>
-              <h3 className="text-[14px] font-semibold"></h3>
-            </div>
+      <div className="mt-[20px]">
+        <div className="bg-[#4D5773] w-full flex gap-[30px] items-center  p-[10px] text-[#fff] rounded-tl-[5px] rounded-tr-[5px]">
+          <div className="w-[90px] h-[20px]">
+            <input
+              type="checkbox"
+              className="w-[15px] h-[20px]"
+              checked={isAllSelected}
+              onChange={handleSelectAll}
+            />
           </div>
-          <div className="w-full px-[10px] h-[600px] overflow-y-scroll">
+          <div className="grid grid-cols-10 items-center  w-full ">
+            <h2 className="text-[14px] font-semibold ">ID</h2>
+            <h2 className="text-[14px] font-semibold">I.F.SH.</h2>
+            <h3 className="text-[14px] font-semibold">Sana</h3>
+            <h3 className="text-[14px] font-semibold">Nomer</h3>
+            <h3 className="text-[14px] font-semibold">Ishchi status</h3>
+            <h3 className="text-[14px] font-semibold">Avans</h3>
+            <h3 className="text-[14px] font-semibold">Maosh</h3>
+            <h3 className="text-[14px] font-semibold">Qolgan summa</h3>
+            <h3 className="text-[14px] font-semibold">Statust</h3>
+            <h3 className="text-[14px] font-semibold"></h3>
+          </div>
+        </div>
+        <div className="bg-[#fff]">
+          <div className=" w-full  px-[10px] h-[600px] overflow-y-scroll ">
             {filteredSearch.map((item: any) => (
               <div
                 key={item.id}
@@ -205,17 +206,25 @@ const Ishbay = ({ count, setCount }: any) => {
                     alt=""
                   />
                 </div>
-                <div className="grid grid-cols-7 gap-6 items-center w-full ">
+                <div className="grid grid-cols-10 gap-3 items-center w-full ">
                   <p className="text-[14px] font-semibold ">{item.invoice}</p>
+
                   <h2 className="text-[14px] font-medium">{item.name}</h2>
+                  <h3 className="text-[14px] font-medium">{item.date}</h3>
                   <h2 className="text-[14px] font-medium">
                     {item.phoneNumber}
                   </h2>
-                  <h3 className="text-[14px] font-medium">{item.date}</h3>
+                  <div className="">
+                    <button className="py-1 px-4 border  border-[#58BC2D] text-[#58BC2D] text-[14px] font-medium">
+                      Oddiy hodim
+                    </button>
+                  </div>
                   <h3 className="text-[14px] font-medium">${item.amount}</h3>
-                  <div>
-                    <button className="py-1 px-4 border border-[#58BC2D] text-[#58BC2D] text-[14px] font-medium">
-                      Активный
+                  <h3 className="text-[14px] font-medium">${item.amount}</h3>
+                  <h3 className="text-[14px] font-medium">${item.amount}</h3>
+                  <div className="">
+                    <button className="py-1 px-4 border  border-[#FF3B30] text-[#FF3B30] text-[14px] font-medium">
+                      To’lash kerak
                     </button>
                   </div>
                   <div className="text-[14px] flex justify-end items-center gap-[20px] font-medium pr-5">
