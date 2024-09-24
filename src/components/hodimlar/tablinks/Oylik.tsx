@@ -233,7 +233,6 @@ const Oylik: React.FC<PropsType> = ({ count, setCount }) => {
 								</div>
 								<div className="grid grid-cols-7 gap-6 items-center w-full ">
 									<p className="text-[14px] font-semibold ">{item.invoice}</p>
-									<p className="text-[14px] font-semibold ">{item.invoice}</p>
 									<h2 className="text-[14px] font-medium">{item.name}</h2>
 									<h2 className="text-[14px] font-medium">
 										{item.phoneNumber}
