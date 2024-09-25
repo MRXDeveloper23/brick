@@ -1,14 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authSlice from './authSlice';
-import oylikSlice from './hodimlarSlice/oylikSlice';
-import ishbaySlice from './hodimlarSlice/ishbaySlice';
-import kunlikSlice from './hodimlarSlice/kunlikSlice';
+import hodimSlice from './slices/hodimSlice';
+import oylikSlice from './slices/oylikSlice';
 
 const rootReducer = combineReducers({
 	auth: authSlice,
+	hodim: hodimSlice,
 	oylik: oylikSlice,
-	ishbay: ishbaySlice,
-	kunlik: kunlikSlice,
 });
 
 const store = configureStore({

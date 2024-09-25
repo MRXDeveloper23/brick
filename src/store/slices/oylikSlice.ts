@@ -1,16 +1,29 @@
+import { OylikData } from '@/data/OylikData';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Oylik } from '../../data/Data';
 
-// Assuming `Data` is your initial dataset.
+interface Item {
+	id: number;
+	name: string;
+	date: string;
+	phoneNumber: number;
+	profile: string;
+	amount: string;
+	invoice: string;
+	category: string;
+}
+
+interface HodimState {
+	items: Item[];
+}
 
 // Initial state
-const initialState = {
-	items: Oylik, // Store the data in Redux state
+const initialState: HodimState = {
+	items: OylikData, // Store the data in Redux state
 };
 
 // Create a slice
 const oylikSlice = createSlice({
-	name: 'data',
+	name: 'oylik',
 	initialState,
 	reducers: {
 		// Action to delete multiple items by their IDs
