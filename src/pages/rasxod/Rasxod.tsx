@@ -298,7 +298,7 @@ const Rasxod: React.FC = () => {
 							className="text-white flex gap-3 items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg text-sm px-5 py-3.5 me-2 mb-2"
 						>
 							<FiPlus className="w-[22px] h-[22px]" />
-							Ro’yxatdan tashqari
+							Chiqim qo’shish
 						</button>
 						<input
 							id="search-dropdownm"
