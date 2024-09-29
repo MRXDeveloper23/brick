@@ -388,119 +388,121 @@ const Statistic: React.FC = () => {
 		<div className="">
 			<Header />
 
-			<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-				<div className="md:col-span-2 bg-white p-5 rounded-md shadow">
-					<div className="flex justify-between">
-						<p className="text-lg">Revenue</p>
-						<div className="flex gap-3">
-							<button className="flex justify-center items-center gap-2 focus:outline-none text-white bg-[#203674] hover:bg-[#142d71] focus:ring-4  font-medium rounded-lg text-sm px-5 h-10 ">
-								<FilterIcon />
-								<p className="font-semibold text-[14px] leading-[19px]">
-									Filtr
-								</p>
-							</button>
-							<button
-								type="button"
-								className="flex justify-center items-center gap-2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 h-10 "
-							>
-								<LuDownload className="w-[20px] h-[20px]" />
-								<span>Download</span>
-							</button>
+			<div className="max-h-[calc(100vh-200px)] overflow-y-scroll mt-6">
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+					<div className="md:col-span-2 bg-white p-5 rounded-md shadow">
+						<div className="flex justify-between">
+							<p className="text-lg">Revenue</p>
+							<div className="flex gap-3">
+								<button className="flex justify-center items-center gap-2 focus:outline-none text-white bg-[#203674] hover:bg-[#142d71] focus:ring-4  font-medium rounded-lg text-sm px-5 h-10 ">
+									<FilterIcon />
+									<p className="font-semibold text-[14px] leading-[19px]">
+										Filtr
+									</p>
+								</button>
+								<button
+									type="button"
+									className="flex justify-center items-center gap-2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 h-10 "
+								>
+									<LuDownload className="w-[20px] h-[20px]" />
+									<span>Download</span>
+								</button>
+							</div>
 						</div>
-					</div>
-					<div className="flex gap-10">
-						<p>
-							<span className="text-lg">Kirim summa</span>{' '}
-							<span className="text-[#4361EE]">$10,840</span>
-						</p>
-						<p>
-							<span className="text-lg">Chiqim summa</span>{' '}
-							<span className="text-[#4361EE]">$10,840</span>
-						</p>
-					</div>
-					<ReactApexChart
-						series={revenueChart.series}
-						options={revenueChart.options}
-						type="area"
-						height={360}
-					/>
-				</div>
-				<div className="md:col-span-1 bg-white p-5 rounded-md shadow">
-					<div className="flex justify-between">
-						<p className="text-lg">Sales by Category</p>
-						<div className="flex gap-4 text-base">
-							<span className="text-[#4361EE] underline cursor-pointer">
-								Income
-							</span>
-							<span className="text-[#00AB55] cursor-pointer">Outcome</span>
+						<div className="flex gap-10">
+							<p>
+								<span className="text-lg">Kirim summa</span>{' '}
+								<span className="text-[#4361EE]">$10,840</span>
+							</p>
+							<p>
+								<span className="text-lg">Chiqim summa</span>{' '}
+								<span className="text-[#4361EE]">$10,840</span>
+							</p>
 						</div>
+						<ReactApexChart
+							series={revenueChart.series}
+							options={revenueChart.options}
+							type="area"
+							height={360}
+						/>
 					</div>
-					<ReactApexChart
-						series={salesByCategory.series}
-						options={salesByCategory.options}
-						type="donut"
-						height={460}
-					/>
+					<div className="md:col-span-1 bg-white p-5 rounded-md shadow">
+						<div className="flex justify-between">
+							<p className="text-lg">Sales by Category</p>
+							<div className="flex gap-4 text-base">
+								<span className="text-[#4361EE] underline cursor-pointer">
+									Income
+								</span>
+								<span className="text-[#00AB55] cursor-pointer">Outcome</span>
+							</div>
+						</div>
+						<ReactApexChart
+							series={salesByCategory.series}
+							options={salesByCategory.options}
+							type="donut"
+							height={460}
+						/>
+					</div>
 				</div>
-			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-				<div className="md:col-span-1 bg-white p-6 rounded-md shadow">
-					<div className="flex justify-between">
-						<div className="flex flex-col gap-1">
-							<span className="text-[#40434E] text-2xl">Rasxodlar</span>
-							<span className="text-[#E7515A] text-sm">
-								Must be paid before July 27, 2022
-							</span>
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+					<div className="md:col-span-1 bg-white p-6 rounded-md shadow">
+						<div className="flex justify-between">
+							<div className="flex flex-col gap-1">
+								<span className="text-[#40434E] text-2xl">Rasxodlar</span>
+								<span className="text-[#E7515A] text-sm">
+									Must be paid before July 27, 2022
+								</span>
+							</div>
+							<div className="flex flex-col gap-1">
+								<span className="text-[#4361EE]">Rasxodlar</span>
+								<span className="text-3xl">$50,000.00</span>
+							</div>
 						</div>
-						<div className="flex flex-col gap-1">
-							<span className="text-[#4361EE]">Rasxodlar</span>
-							<span className="text-3xl">$50,000.00</span>
-						</div>
-					</div>
 
-					<ReactApexChart
-						series={revenueChart2.series}
-						options={revenueChart2.options}
-						type="area"
-						height={300}
-					/>
-				</div>
-				<div className="md:col-span-1 bg-white p-5 rounded-md shadow">
-					<p className="text-[#40434E] text-2xl">
-						Ro’yxatdan tashqari to’lovlar
-					</p>
-					<div className="relative overflow-x-auto mt-4">
-						<table className="w-full text-sm text-left rtl:text-right text-gray-500 rounded-lg">
-							<thead className="  text-white text-md">
-								<tr className="bg-[#4D5773]">
-									<th scope="col" className="px-6 py-3  rounded-l-lg">
-										<span className="font-normal">ID</span>
-									</th>
-									<th scope="col" className="px-6 py-3">
-										<span className="font-normal">DATE</span>
-									</th>
-									<th scope="col" className="px-6 py-3">
-										<span className="font-normal">Firma nomi</span>
-									</th>
-									<th scope="col" className="px-6 py-3 rounded-r-lg">
-										<span className="font-normal">Mablag’ qiymati</span>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{[0, 1, 2, 3, 4, 5].map((i) => (
-									<tr key={i} className="bg-white border-b border-[#191E3A]">
-										<td scope="row" className="px-6 py-4 text-[#40434E] ">
-											#01
-										</td>
-										<td className="px-6 py-4">Oct 08, 2021</td>
-										<td className="px-6 py-4">Murat building.mchj</td>
-										<td className="px-6 py-4">$1,358.75</td>
+						<ReactApexChart
+							series={revenueChart2.series}
+							options={revenueChart2.options}
+							type="area"
+							height={300}
+						/>
+					</div>
+					<div className="md:col-span-1 bg-white p-5 rounded-md shadow">
+						<p className="text-[#40434E] text-2xl">
+							Ro’yxatdan tashqari to’lovlar
+						</p>
+						<div className="relative overflow-x-auto mt-4">
+							<table className="w-full text-sm text-left rtl:text-right text-gray-500 rounded-lg">
+								<thead className="  text-white text-md">
+									<tr className="bg-[#4D5773]">
+										<th scope="col" className="px-6 py-3  rounded-l-lg">
+											<span className="font-normal">ID</span>
+										</th>
+										<th scope="col" className="px-6 py-3">
+											<span className="font-normal">DATE</span>
+										</th>
+										<th scope="col" className="px-6 py-3">
+											<span className="font-normal">Firma nomi</span>
+										</th>
+										<th scope="col" className="px-6 py-3 rounded-r-lg">
+											<span className="font-normal">Mablag’ qiymati</span>
+										</th>
 									</tr>
-								))}
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									{[0, 1, 2, 3, 4, 5].map((i) => (
+										<tr key={i} className="bg-white border-b border-[#191E3A]">
+											<td scope="row" className="px-6 py-4 text-[#40434E] ">
+												#01
+											</td>
+											<td className="px-6 py-4">Oct 08, 2021</td>
+											<td className="px-6 py-4">Murat building.mchj</td>
+											<td className="px-6 py-4">$1,358.75</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
