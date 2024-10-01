@@ -1,178 +1,238 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img from '../../../assets/details.png';
+import { useDispatch } from 'react-redux';
+import { updateHodim } from '@/store/slices/hodimSlice';
 
-const Malumotlar: React.FC = () => {
+interface findData {
+	id: number;
+	name: string;
+	date: string;
+	phoneNumber: number;
+	profile: string;
+	amount: string;
+	invoice: string;
+	ishchiStatus?: string;
+	manzil?: string;
+	brithday?: string;
+	email: string;
+	category: string;
+	cardNumber?: number;
+	oylik?: number;
+	additionalInfo?: string; // Qo'shimcha ma'lumotlar maydoni
+}
+
+interface MalumotlarProps {
+	hodim: findData;
+}
+
+const Malumotlar: React.FC<MalumotlarProps> = ({ hodim }) => {
+	const [isEditing, setIsEditing] = useState(false);
+	const [editedHodim, setEditedHodim] = useState(hodim);
+	const dispatch = useDispatch();
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { id, value } = e.target;
+		setEditedHodim((prev) => ({
+			...prev,
+			[id]: value,
+		}));
+	};
+
+	const handleEdit = () => {
+		setIsEditing(true);
+	};
+
+	const handleSave = () => {
+		dispatch(updateHodim(editedHodim)); // Redux store'da yangilash
+		setIsEditing(false);
+	};
+
 	return (
 		<div className="px-5">
-			<h3 className="text-[18px] text-[#404040] font-semibold  py-5">
-				Саматов Рамазон Алимурадови
+			<h3 className="text-[18px] text-[#404040] font-semibold py-5">
+				{editedHodim.name}
 			</h3>
 			<div className="flex">
-				<div className=" flex-[.2] flex justify-center">
+				<div className="flex-[.2] flex justify-center">
 					<img src={img} alt="" className="w-[128px] h-[128px]" />
 				</div>
 				<div className="flex-1 ">
 					<form className="grid grid-cols-2 gap-5">
+						{/* Ism */}
 						<div className="flex flex-col">
 							<label
 								htmlFor="name"
-								className="text-[14px] text-[#404040] font-semibold "
+								className="text-[14px] text-[#404040] font-semibold"
 							>
 								Ism
 							</label>
 							<input
 								type="text"
-								disabled
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
 								id="name"
-								placeholder="Ism..."
+								value={editedHodim.name}
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
 							/>
 						</div>
+						{/* Familiya */}
 						<div className="flex flex-col">
 							<label
-								htmlFor="familiya"
-								className="text-[14px] text-[#404040] font-semibold "
+								htmlFor="family"
+								className="text-[14px] text-[#404040] font-semibold"
 							>
 								Familiya
 							</label>
 							<input
 								type="text"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="familiya"
-								placeholder="Familiya..."
+								id="family"
+								value={editedHodim.name} // Bu maydonni haqiqiy o'zgaruvchilar bilan moslang
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
 							/>
-						</div>{' '}
+						</div>
+						{/* Lavozim */}
 						<div className="flex flex-col">
 							<label
-								htmlFor="lavozim"
-								className="text-[14px] text-[#404040] font-semibold "
+								htmlFor="ishchiStatus"
+								className="text-[14px] text-[#404040] font-semibold"
 							>
 								Lavozim
 							</label>
 							<input
 								type="text"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="lavozim"
-								placeholder="Lavozim..."
+								id="ishchiStatus"
+								value={editedHodim.ishchiStatus}
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
 							/>
-						</div>{' '}
+						</div>
+						{/* Manzil */}
 						<div className="flex flex-col">
 							<label
-								htmlFor="mazil"
-								className="text-[14px] text-[#404040] font-semibold "
-							>
-								Mazil
-							</label>
-							<input
-								type="text"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="mazil"
-								placeholder="Mazil..."
-							/>
-						</div>{' '}
-						<div className="flex flex-col">
-							<label
-								htmlFor="sana"
-								className="text-[14px] text-[#404040] font-semibold "
-							>
-								Tugilgan sanasi
-							</label>
-							<input
-								type="number"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="sana"
-								placeholder="kun / oy / yil ..."
-							/>
-						</div>{' '}
-						<div className="flex flex-col">
-							<label
-								htmlFor="phone"
-								className="text-[14px] text-[#404040] font-semibold "
-							>
-								Telefon Nomer
-							</label>
-							<input
-								type="text"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="phone"
-								placeholder="Telefon Nomer...."
-							/>
-						</div>{' '}
-						<div className="flex flex-col">
-							<label
-								htmlFor="location"
-								className="text-[14px] text-[#404040] font-semibold "
+								htmlFor="manzil"
+								className="text-[14px] text-[#404040] font-semibold"
 							>
 								Manzil
 							</label>
 							<input
 								type="text"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="location"
-								placeholder="Manzil..."
+								id="manzil"
+								value={editedHodim.manzil}
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
 							/>
-						</div>{' '}
+						</div>
+						{/* Tug'ilgan sana */}
 						<div className="flex flex-col">
 							<label
-								htmlFor="zaplata"
-								className="text-[14px] text-[#404040] font-semibold "
+								htmlFor="brithday"
+								className="text-[14px] text-[#404040] font-semibold"
 							>
-								должности и зарплата{' '}
+								Tug'ilgan sana
 							</label>
 							<input
 								type="text"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="zaplata"
-								placeholder="должности и зарплата ..."
+								id="brithday"
+								value={editedHodim.brithday}
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
 							/>
-						</div>{' '}
+						</div>
+						{/* Telefon raqam */}
 						<div className="flex flex-col">
 							<label
-								htmlFor="card"
-								className="text-[14px] text-[#404040] font-semibold "
+								htmlFor="phoneNumber"
+								className="text-[14px] text-[#404040] font-semibold"
 							>
-								Karta raam
+								Telefon raqam
 							</label>
 							<input
-								type="number"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="card"
-								placeholder="Karta raam..."
+								type="text"
+								id="phoneNumber"
+								value={editedHodim.phoneNumber}
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
 							/>
-						</div>{' '}
+						</div>
+						{/* Karta raqam */}
 						<div className="flex flex-col">
 							<label
-								htmlFor="money"
-								className="text-[14px] text-[#404040] font-semibold "
+								htmlFor="cardNumber"
+								className="text-[14px] text-[#404040] font-semibold"
+							>
+								Karta raqam
+							</label>
+							<input
+								type="text"
+								id="cardNumber"
+								value={editedHodim.cardNumber}
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
+							/>
+						</div>
+						{/* Oylik */}
+						<div className="flex flex-col">
+							<label
+								htmlFor="oylik"
+								className="text-[14px] text-[#404040] font-semibold"
 							>
 								Oylik
 							</label>
 							<input
 								type="text"
-								className="bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md"
-								id="money"
-								placeholder="Oylik..."
+								id="oylik"
+								value={editedHodim.oylik}
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
+							/>
+						</div>
+						{/* Qo'shimcha ma'lumotlar */}
+						<div className="flex flex-col">
+							<label
+								htmlFor="additionalInfo"
+								className="text-[14px] text-[#404040] font-semibold"
+							>
+								Qo'shimcha ma'lumotlar
+							</label>
+							<input
+								type="text"
+								id="additionalInfo"
+								value={editedHodim.additionalInfo || ''} // Qo'shimcha ma'lumotlarni ko'rsatish
+								onChange={handleChange}
+								disabled={!isEditing}
+								className={`bg-[#F1F5F8] border border-[#071A5033] py-2 px-4 text-[14px] outline-0 rounded-md ${!isEditing ? 'opacity-50' : ''}`}
 							/>
 						</div>
 					</form>
-					<div className="pt-6 pb-3 flex items-center gap-2">
-						<input type="checkbox" id="check" />
-						<label
-							htmlFor="check"
-							className="text-[14px] text-[#404040] font-semibold"
-						>
-							Make this my default address
-						</label>
-					</div>
 					<div className="flex gap-2 pt-3 pb-6">
-						<button className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3">
-							{/* <TrashIcon color="#fff" /> */}
-							<p className="font-semibold text-[14px] leading-[19px]">Save</p>
-						</button>{' '}
-						<button className="px-5 text-[#fff] rounded-md bg-[#00AB55] flex items-center h-[38px] gap-3">
-							{/* <TrashIcon color="#fff" /> */}
-							<p className="font-semibold text-[14px] leading-[19px]">Edite</p>
-						</button>
+						{/* Save Button */}
+						{isEditing ? (
+							<button
+								onClick={handleSave}
+								className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3"
+							>
+								<p className="font-semibold text-[14px] leading-[19px]">
+									Saqlash
+								</p>
+							</button>
+						) : (
+							<button
+								onClick={handleEdit}
+								className="px-5 text-[#fff] rounded-md bg-[#00AB55] flex items-center h-[38px] gap-3"
+							>
+								<p className="font-semibold text-[14px] leading-[19px]">
+									Tahrirlash
+								</p>
+							</button>
+						)}
 					</div>
 				</div>
 			</div>

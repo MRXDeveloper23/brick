@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img from '../../../assets/details.png';
 import {
+	DownloadIcon,
+	FilterIcon,
 	TasdiqlashTwo,
 	TasqidlashOne,
 } from '../../../assets/hodimlar/HodimlarSvg';
+import FilterDetails from '@/components/modals/FilterDetails';
 
 const Bajarilgan: React.FC = () => {
+	const [filterModal, setFilterModal] = useState<boolean>(false);
 	return (
 		<div className="px-5">
-			<div className="">
-				<h3 className="text-[18px] text-[#404040] font-semibold  py-5">
+			<div className="flex justify-between items-center py-5">
+				<h3 className="text-[18px] text-[#404040] font-semibold  ">
 					Саматов Рамазон Алимурадови
 				</h3>
+				<div className="flex gap-4">
+					<button
+						onClick={() => setFilterModal(true)}
+						type="submit"
+						className="py-2.5 px-5 bg-[#203674] rounded text-[14px] text-[#fff] font-semibold flex items-center gap-2"
+					>
+						<FilterIcon />
+						Filter
+					</button>
+					<button
+						type="button"
+						className="py-2.5 px-5 bg-[#00AB55]  rounded text-[14px] text-[#fff] font-semibold flex items-center gap-2"
+					>
+						<DownloadIcon color="#fff" />
+						Download
+					</button>
+					{filterModal && (
+						<FilterDetails modal={filterModal} setModal={setFilterModal} />
+					)}
+				</div>
 			</div>
 			<div className="flex">
 				<div className=" flex-[.2] flex justify-center">

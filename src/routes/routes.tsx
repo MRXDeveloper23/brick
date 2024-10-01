@@ -22,7 +22,7 @@ export const protectedRouter = createBrowserRouter([
 		),
 	},
 	{
-		path: '/details',
+		path: '/details/:id',
 		element: (
 			<Layout>
 				<HodimDetails />

@@ -12,6 +12,9 @@ import {
 } from '@/assets/hodimlar/HodimlarSvg';
 import { deleteSelected } from '@/store/slices/hodimSlice';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import NewUser from '../modals/NewUser';
+import HodimlarFilter from '../modals/HodimlarFilter';
 
 interface Item {
 	id: number;
@@ -32,7 +35,8 @@ interface RootState {
 
 const Table: React.FC = () => {
 	const items = useSelector((state: RootState) => state.hodim.items);
-
+	const [modal, setModal] = useState<boolean>(false);
+	const [filterModal, setFilterModal] = useState<boolean>(false);
 	const [category, setCategory] = useState<string>('Oylik');
 	const [search, setSearch] = useState<string>('');
 	const [selectRows, setSelectRows] = useState<number[]>([]);
@@ -40,6 +44,7 @@ const Table: React.FC = () => {
 
 	const filteredData = items.filter((f) => f.category === category);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const filteredSearch = filteredData.filter((f) =>
 		f.name.toLowerCase().includes(search.toLowerCase())
@@ -125,7 +130,10 @@ const Table: React.FC = () => {
 									Parol yangilash
 								</p>
 							</button>
-							<button className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3">
+							<button
+								onClick={() => setModal(true)}
+								className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3"
+							>
 								<PlusIcon color="#fff" />
 								<p className="font-semibold text-[14px] leading-[19px]">
 									Add New
@@ -133,6 +141,7 @@ const Table: React.FC = () => {
 							</button>
 						</div>
 					</div>
+					{modal && <NewUser modal={modal} setModal={setModal} />}
 				</div>
 				<div className="flex justify-between items-center pr-3">
 					<div className="py-1 flex">
@@ -159,10 +168,16 @@ const Table: React.FC = () => {
 						</button>
 					</div>
 					<div>
-						<button className="px-5 text-[#fff] rounded-md bg-[#203674] flex items-center h-[38px] gap-3">
+						<button
+							onClick={() => setFilterModal(true)}
+							className="px-5 text-[#fff] rounded-md bg-[#203674] flex items-center h-[38px] gap-3"
+						>
 							<FilterIcon />
 							<p className="font-semibold text-[14px] leading-[19px]">Filtr</p>
 						</button>
+						{filterModal && (
+							<HodimlarFilter modal={filterModal} setModal={setFilterModal} />
+						)}
 					</div>
 				</div>
 			</div>
@@ -203,6 +218,7 @@ const Table: React.FC = () => {
 									/>
 									<img
 										src={item.profile}
+										onClick={() => navigate(`/details/${item.id}`)}
 										className="w-[40px] h-[40px] cursor-pointer"
 										alt=""
 									/>

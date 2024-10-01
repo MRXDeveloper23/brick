@@ -8,7 +8,7 @@ const SotuvBolimi: React.FC = () => {
 		<div className="w-full h-full  overflow-hidden">
 			<div className="bg-[#fff] flex justify-between p-4 items-center shadow-lg rounded-md shadow-[#0000000D]">
 				<h2 className="text-[24px] font-medium">Sotuv bo’limi</h2>
-				<div className="bg-[#DFE8F1] flex items-center p-2 rounded-[5px]">
+				<div className="bg-[#DFE8F1] flex items-center py-2 px-4 rounded-[5px]">
 					<input
 						type="text"
 						placeholder="Search"

@@ -9,9 +9,19 @@ import Malumotlar from './details/Malumotlar';
 import Bajarilgan from './details/Bajarilgan';
 import Tolov from './details/Tolov';
 import Oylik from './details/Oylik';
+import { useParams } from 'react-router-dom';
+import { HodimlarData } from '@/data/Data';
 
 const HodimDetails: React.FC = () => {
 	const [pageCount, setPageCount] = useState<number>(1);
+	const { id } = useParams<{ id: string }>();
+
+	// id ni 'number' formatiga aylantirish
+	const numericId = Number(id);
+
+	// HodimlarData ni id bo'yicha filtrlash
+	const findData = HodimlarData.filter((f) => f.id === numericId);
+	console.log(findData);
 
 	const handleClick = (num: number) => {
 		setPageCount(num);
@@ -22,7 +32,7 @@ const HodimDetails: React.FC = () => {
 			<div className="bg-[#fff] rounded-md shadow-md">
 				<div className="flex justify-between items-center py-4 border-b border-[#1B2E4B] pl-5 pr-[60px] ">
 					<h2 className="text-[24px] font-medium leading-[28px]">
-						Xodim: Саматов Рамазон Алимурадови
+						Xodim: {findData[0].name}
 					</h2>
 					<div className="flex gap-4">
 						<button className="px-5 text-[#fff] rounded-md bg-[#4361EE] flex items-center h-[38px] gap-3">
@@ -91,7 +101,7 @@ const HodimDetails: React.FC = () => {
 				</div>
 			</div>
 			<div className="bg-[#fff] h-auto mt-[20px] w-full">
-				{pageCount == 1 && <Malumotlar />}
+				{pageCount == 1 && <Malumotlar hodim={findData[0]} />}
 				{pageCount == 2 && <Bajarilgan />}
 				{pageCount == 3 && <Tolov />}
 				{pageCount == 4 && <Oylik />}

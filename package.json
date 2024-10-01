@@ -12,6 +12,7 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"@headlessui/react": "^2.1.8",
 		"@mantine/core": "^7.12.2",
 		"@reduxjs/toolkit": "^2.2.7",
 		"@tabler/icons-react": "^3.17.0",
