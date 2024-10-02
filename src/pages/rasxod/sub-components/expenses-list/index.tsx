@@ -2,6 +2,7 @@ import { FiPlus } from 'react-icons/fi';
 import percent from './../../icons/percent.svg';
 import { Modal } from 'react-responsive-modal';
 import { useState } from 'react';
+import { FaPlus } from 'react-icons/fa6';
 import InputExpenseModal from '../input-expense-modal';
 
 const servicesList = [
@@ -16,7 +17,6 @@ const servicesList = [
 	'Soliq',
 	'Komunalka',
 	'Ishchi oyliklari',
-	'Homashyolar',
 ];
 
 export default function ExpensesList() {
@@ -59,6 +59,9 @@ export default function ExpensesList() {
 							<span>{service}</span>
 						</div>
 					))}
+					<div className="md:col-span-1 text-[100px] cursor-pointer shadow-md flex items-center justify-center text-white rounded-md bg-[#4361EEB5]">
+						<FaPlus className="w-[60px] h-[60px]" />
+					</div>
 				</div>
 			</div>
 			<Modal
