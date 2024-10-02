@@ -8,6 +8,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import 'primereact/resources/themes/lara-light-indigo/theme.css'; // Theme
 import 'primereact/resources/primereact.min.css'; // Core CSS
 import 'primeicons/primeicons.css'; // Icons CSS
+import 'react-responsive-modal/styles.css'; // Reactive Modal
 
 const ProtectedRoutes = () => {
 	const token = useSelector((state: RootState) => state.auth.token);
