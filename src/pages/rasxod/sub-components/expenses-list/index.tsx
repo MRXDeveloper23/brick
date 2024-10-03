@@ -4,6 +4,7 @@ import { Modal } from 'react-responsive-modal';
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
 import InputExpenseModal from '../input-expense-modal';
+import ExpenseSectionModal from '../expense-section-modal';
 
 const servicesList = [
 	'Soliq',
@@ -24,6 +25,11 @@ export default function ExpensesList() {
 
 	const onOpenModal = () => setOpen(true);
 	const onCloseModal = () => setOpen(false);
+
+	const [open2, setOpen2] = useState(false);
+
+	const onOpenModal2 = () => setOpen2(true);
+	const onCloseModal2 = () => setOpen2(false);
 
 	return (
 		<div>
@@ -59,7 +65,10 @@ export default function ExpensesList() {
 							<span>{service}</span>
 						</div>
 					))}
-					<div className="md:col-span-1 text-[100px] cursor-pointer shadow-md flex items-center justify-center text-white rounded-md bg-[#4361EEB5]">
+					<div
+						onClick={onOpenModal2}
+						className="md:col-span-1 text-[100px] cursor-pointer shadow-md flex items-center justify-center text-white rounded-md bg-[#4361EEB5]"
+					>
 						<FaPlus className="w-[60px] h-[60px]" />
 					</div>
 				</div>
@@ -76,6 +85,20 @@ export default function ExpensesList() {
 				center
 			>
 				<InputExpenseModal onCloseModal={onCloseModal} />
+			</Modal>
+
+			<Modal
+				open={open2}
+				onClose={onCloseModal2}
+				showCloseIcon={false} // This removes the close button
+				classNames={{
+					overlay: 'blurOverlay', // Apply custom overlay class
+					modal: 'adding-expense-modal',
+					closeButton: 'close-button-addmin-expense-modal',
+				}}
+				center
+			>
+				<ExpenseSectionModal onCloseModal={onCloseModal2} />
 			</Modal>
 		</div>
 	);
