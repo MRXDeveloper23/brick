@@ -172,7 +172,7 @@ const Table: React.FC = () => {
 							onClick={() => setFilterModal(true)}
 							className="px-5 text-[#fff] rounded-md bg-[#203674] flex items-center h-[38px] gap-3"
 						>
-							<FilterIcon />
+							<FilterIcon color="#fff" />
 							<p className="font-semibold text-[14px] leading-[19px]">Filtr</p>
 						</button>
 						{filterModal && (

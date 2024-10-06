@@ -22,7 +22,7 @@ const Bajarilgan: React.FC = () => {
 						type="submit"
 						className="py-2.5 px-5 bg-[#203674] rounded text-[14px] text-[#fff] font-semibold flex items-center gap-2"
 					>
-						<FilterIcon />
+						<FilterIcon color="#fff" />
 						Filter
 					</button>
 					<button

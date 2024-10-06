@@ -223,7 +223,7 @@ export const UserIcon: React.FC<propsColor> = ({ color }) => {
 	);
 };
 
-export const FilterIcon: React.FC = () => {
+export const FilterIcon: React.FC<propsColor> = ({ color }) => {
 	return (
 		<svg
 			width="20"
@@ -235,63 +235,63 @@ export const FilterIcon: React.FC = () => {
 			<g clipPath="url(#clip0_174_3004)">
 				<path
 					d="M10 5.00001C10 5.44204 10.1756 5.86596 10.4882 6.17852C10.8007 6.49108 11.2246 6.66668 11.6667 6.66668C12.1087 6.66668 12.5326 6.49108 12.8452 6.17852C13.1577 5.86596 13.3333 5.44204 13.3333 5.00001C13.3333 4.55798 13.1577 4.13406 12.8452 3.8215C12.5326 3.50894 12.1087 3.33334 11.6667 3.33334C11.2246 3.33334 10.8007 3.50894 10.4882 3.8215C10.1756 4.13406 10 4.55798 10 5.00001Z"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M3.33325 5H9.99992"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M13.3333 5H16.6666"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M5 10C5 10.442 5.17559 10.866 5.48816 11.1785C5.80072 11.4911 6.22464 11.6667 6.66667 11.6667C7.10869 11.6667 7.53262 11.4911 7.84518 11.1785C8.15774 10.866 8.33333 10.442 8.33333 10C8.33333 9.55798 8.15774 9.13406 7.84518 8.8215C7.53262 8.50894 7.10869 8.33334 6.66667 8.33334C6.22464 8.33334 5.80072 8.50894 5.48816 8.8215C5.17559 9.13406 5 9.55798 5 10Z"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M3.33325 10H4.99992"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M8.33325 10H16.6666"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M12.5 15C12.5 15.442 12.6756 15.866 12.9882 16.1785C13.3007 16.4911 13.7246 16.6667 14.1667 16.6667C14.6087 16.6667 15.0326 16.4911 15.3452 16.1785C15.6577 15.866 15.8333 15.442 15.8333 15C15.8333 14.558 15.6577 14.1341 15.3452 13.8215C15.0326 13.5089 14.6087 13.3333 14.1667 13.3333C13.7246 13.3333 13.3007 13.5089 12.9882 13.8215C12.6756 14.1341 12.5 14.558 12.5 15Z"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M3.33325 15H12.4999"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
 				<path
 					d="M15.8333 15H16.6666"
-					stroke="white"
+					stroke={color}
 					strokeWidth="1.4"
 					strokeLinecap="round"
 					strokeLinejoin="round"
