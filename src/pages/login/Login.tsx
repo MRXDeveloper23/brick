@@ -6,20 +6,37 @@ import { signIn } from '../../store/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
+import { login } from '@/services/networkServices/authService';
+import { useMutation } from '@tanstack/react-query';
 
 type passwordEyeState = boolean;
 
 const Login = () => {
-	const [name, setName] = useState<string>('admin');
-	const [password, setPassword] = useState<string>('12345678');
+	const [name, setName] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
 	const [passwordEye, setPasswordEye] = useState<passwordEyeState>(true);
 	const [nameError, setNameError] = useState<string>('');
 	const [passwordError, setPasswordError] = useState<string>('');
 	const navigate = useNavigate();
 
-	const [isLoading, setIsLoading] = useState(false);
-
 	const dispatch = useDispatch();
+
+	const mutation = useMutation({
+		mutationFn: login,
+		onSuccess: (data) => {
+			if (data.success) {
+				dispatch(signIn({ token: data.data.accessToken }));
+				toast.success('You have successfully Signed In!');
+				navigate('/');
+			} else {
+				toast.error(data.message);
+			}
+		},
+		onError: (error) => {
+			console.error('Login failed:', error.message);
+			toast.error('Problem to Sign In, please try again!');
+		},
+	});
 
 	const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setName(e.target.value);
@@ -45,7 +62,7 @@ const Login = () => {
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		console.log(name, password);
+
 		if (name.length < 3) {
 			setNameError('Name must be at least 3 characters long.');
 			return;
@@ -55,19 +72,11 @@ const Login = () => {
 			setPasswordError('Password must be at least 6 characters long.');
 			return;
 		}
-		setIsLoading(true);
-		setTimeout(() => {
-			if (name === 'admin' && password === '12345678') {
-				dispatch(signIn({ token: 'test_token' }));
-				toast.success('You have successfully Signed In!');
-				navigate('/');
-				setIsLoading(false);
-			} else {
-				toast.error('Problem to Sign In, please try again!');
-				navigate('/');
-				setIsLoading(false);
-			}
-		}, 1000);
+
+		mutation.mutate({
+			phoneNumber: name,
+			password,
+		});
 	};
 
 	useEffect(() => {
@@ -131,7 +140,7 @@ const Login = () => {
 						{passwordError && (
 							<p className="text-red-500 text-sm mt-2">{passwordError}</p>
 						)}
-						{!isLoading && (
+						{!mutation.isPending && (
 							<button
 								type="submit"
 								className="w-full bg-[#4361EE] py-[13px] rounded-[12px] text-[#fff] font-semibold mt-[30px]"
@@ -139,7 +148,7 @@ const Login = () => {
 								Log in
 							</button>
 						)}
-						{isLoading && (
+						{mutation.isPending && (
 							<button
 								disabled
 								type="submit"
