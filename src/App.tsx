@@ -5,6 +5,8 @@ import { Provider, useSelector } from 'react-redux';
 import store, { RootState } from './store';
 import { ToastContainer } from 'react-toastify';
 import { PrimeReactProvider } from 'primereact/api';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // Import React Query
+
 import 'primereact/resources/themes/lara-light-indigo/theme.css'; // Theme
 import 'primereact/resources/primereact.min.css'; // Core CSS
 import 'primeicons/primeicons.css'; // Icons CSS
@@ -20,13 +22,17 @@ const ProtectedRoutes = () => {
 	return <RouterProvider router={publicRouter} />;
 };
 
+const queryClient = new QueryClient();
+
 const App = () => {
 	return (
 		<Provider store={store}>
-			<ToastContainer />
-			<PrimeReactProvider>
-				<ProtectedRoutes />
-			</PrimeReactProvider>
+			<QueryClientProvider client={queryClient}>
+				<ToastContainer />
+				<PrimeReactProvider>
+					<ProtectedRoutes />
+				</PrimeReactProvider>
+			</QueryClientProvider>
 		</Provider>
 	);
 };
